@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<!--
+Nome: André Messias Russi  Turma: 3I 
+Nome: Anna Julia de Moura Fontes
+Nome: Gabriela Viana Lisboa
+Nome:Pedro Yudi Chibana Levy
+Nome: Vinicius Shinohara Barbosa-->
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Detector de números primos</title>
+</head>
+<body>
+<h2>Detector de números primos</h2>
+<input type="number" id="numberInput" placeholder="Insira um número">
+<button onclick="verificarnumero()">Verificar numero</button>
+<canvas id="resultCanvas" width="200" height="50"></canvas>
+
+<script>
+function eprimo(num) {
+    if (num <= 1) {
+        return false;
+    }
+    for (let i = 2; i <= Math.sqrt(num); i++) {
+        if (num % i === 0) {
+            return false;
+        }
+    }
+    return true;
+}
+
+function verificarnumero() {
+    const numberInput = document.getElementById('numberInput');
+    const num = parseInt(numberInput.value);
+    const canvas = document.getElementById('resultCanvas');
+    const ctx = canvas.getContext('2d');
+    
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    
+    if (eprimo(num)) {
+        ctx.font = '20px Arial';
+        ctx.fillText(num + ' é primo', 10, 30);
+    } else {
+        ctx.font = '20px Arial';
+        ctx.fillText(num + ' não é primo', 10, 30);
+    }
+}
+</script>
+</body>
+</html>
